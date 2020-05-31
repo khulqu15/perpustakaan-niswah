@@ -66,50 +66,65 @@
   <?php 
 
    if (isset($_POST['submit'])) {
-
-    
     $username = $_POST ['username'];
     $nama = $_POST ['nama'];
     $password = $_POST ['password'];
     $level = $_POST ['level'];
-
     $foto = $_FILES['foto']['name'];
-
     $lokasi = $_FILES['foto']['tmp_name'];
-  
-
-    if (!empty($lokasi)) {
-
-    move_uploaded_file($lokasi,"images/".$foto);
+    if($foto !== "") {
+      if (!empty($lokasi)) {
+        move_uploaded_file($lokasi,"images/".$foto);
+        $sql = $koneksi-> query ("update tb_user set username='$username',nama='$nama',password='$password',level='$level',foto='$foto' where id='$id' ");
+        if ($sql) {
+          ?>
+          <script type="text/javascript">
+            
+            alert (" Data Berhasil Di Simpan");
+            window.location.href="?page=pengguna";
+          </script>
+          <?php 
+        }
      
-    
-   $sql = $koneksi-> query ("update tb_user set username='$username',nama='$nama',password='$password',level='$level',foto='$foto' where id='$id' ");
-
-
-   if ($sql) {
-     ?>
-     <script type="text/javascript">
-       
-       alert (" Data Berhasil Di Simpan");
-       window.location.href="?page=pengguna";
-     </script>
-     <?php 
-   }
-   
-  } else {
-  	 $sql = $koneksi-> query ("update tb_user set (username='$username',nama='$nama',password='$password',level='$level' where id='$id' ");
-
-
-   if ($sql) {
-     ?>
-     <script type="text/javascript">
-       
-       alert (" Data Berhasil Di Simpan");
-       window.location.href="?page=pengguna";
-     </script>
-     <?php 
-   }
-  }
+      } else {
+        $sql = $koneksi-> query ("update tb_user set (username='$username',nama='$nama',password='$password',level='$level' where id='$id' ");
+        if ($sql) {
+          ?>
+          <script type="text/javascript">
+            
+            alert (" Data Berhasil Di Simpan");
+            window.location.href="?page=pengguna";
+          </script>
+          <?php 
+        }
+      }
+    } else {
+      if (!empty($lokasi)) {
+        move_uploaded_file($lokasi,"images/".$foto);
+        $sql = $koneksi-> query ("UPDATE tb_user SET username='$username',nama='$nama',password='$password',level='$level',foto=foto where id='$id' ");
+        if ($sql) {
+          ?>
+          <script type="text/javascript">
+            
+            alert (" Data Berhasil Di Simpan");
+            window.location.href="?page=pengguna";
+          </script>
+          <?php 
+        }
+     
+      } else {
+        $sql = $koneksi-> query ("UPDATE tb_user set username='$username',nama='$nama',password='$password',level='$level', foto=foto where id='$id' ");
+        if ($sql) {
+          ?>
+          <script type="text/javascript">
+            
+            alert (" Data Berhasil Di Simpan");
+            window.location.href="?page=pengguna";
+          </script>
+          <?php 
+        }
+      }
+    }
  }  
 
   ?>
