@@ -60,10 +60,9 @@
             <div class="box-body">
                 <div class="form-group">
                   <label> <b> PROGRAM KEAHLIAN </b> </label>
-                  <select class=" form-control" name=" keahlian"/>
+                  <select class=" form-control" name="keahlian"/>
                    <option value="ti"> Teknik Informasi </option>
-                   <option value="si"> Sistem Informasi </option>
-                   
+                   <option value="si"> Sistem Informasi </option>                   
                   </select>
                 </div>
 
@@ -84,7 +83,7 @@
     $tempat_lahir = $_POST ['tempat_lahir'];
     $tgl_lahir = $_POST ['tgl_lahir'];
     $jenis_kelamin= $_POST ['jenis_kelamin'];
-    $keahlian = $_POST ['keahlian '];
+    $keahlian = $_POST ['keahlian'];
 
    $sql = $koneksi-> query ("update tb_anggota set nim='$nim' , nama='$nama' , tempat_lahir='$tempat_lahir' , tgl_lahir='$tgl_lahir' , jenis_kelamin='$jenis_kelamin' , keahlian='$keahlian' where nim='$nim' ");
 

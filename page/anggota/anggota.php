@@ -27,9 +27,9 @@
 
                           while ($data = $sql ->fetch_assoc()) {
 
-                         $jenis_kelamin = ($data['jenis_kelamin']==l)? "Laki-Laki" : "Perempuan";
+                         $jenis_kelamin = ($data['jenis_kelamin']=="l")? "Laki-Laki" : "Perempuan";
 
-                          $keahlian = ($data['keahlian']==ti)? "Teknik Informasi" : "Sistem Informasi";
+                          $keahlian = ($data['keahlian']=="ti")? "Teknik Informasi" : "Sistem Informasi";
                             
                        $no++; 
                    ?>
